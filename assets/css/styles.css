@@ -1,0 +1,443 @@
+/*
+ * Stylesheet for Apple and Berry Technologies website
+ *
+ * This file defines the visual appearance of the site, including
+ * typography, colour palette, layouts, responsive behaviour and
+ * transitions. The design uses a soft, modern palette inspired by
+ * the company logo and hero artwork. When editing or extending the
+ * styles, prefer variables for colours and keep the layout flexible.
+ */
+
+/* Root variables for easy theme tweaking */
+:root {
+  --primary-colour: #0a192f;
+  --accent-colour: #2ec4b6;
+  --accent-colour-hover: #27b6a8;
+  --background-light: #f7f9fc;
+  --text-dark: #0a192f;
+  --text-light: #ffffff;
+}
+
+/* Global resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behaviour: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Navigation */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 60px;
+  padding: 0 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: var(--primary-colour);
+}
+
+.logo-container img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.company-name {
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--primary-colour);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--accent-colour);
+}
+
+/* Hamburger menu for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 30px;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-colour);
+  margin: 3px 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-light);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--accent-colour);
+  color: var(--text-light);
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--accent-colour-hover);
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* About */
+.about {
+  background-color: #ffffff;
+}
+
+.about .container {
+  /* Use a responsive grid for the about section to ensure
+     the text and image sit side‑by‑side on larger screens
+     and stack on smaller screens. */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  align-items: center;
+}
+
+.about-text {
+  flex: 1 1 60%;
+  min-width: 260px;
+  /* Display text immediately; reveal animations reserved for cards */
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
+}
+
+.about-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-colour);
+}
+
+.about-text p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: var(--primary-colour);
+}
+
+.about-image {
+  flex: 1 1 40%;
+  min-width: 260px;
+  text-align: center;
+  /* Display image immediately; reveal animations reserved for cards */
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
+}
+
+.about-image.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Services */
+.services {
+  background-color: var(--background-light);
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-colour);
+}
+
+.services .subtitle {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+  color: var(--primary-colour);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-icon img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--primary-colour);
+}
+
+.card p {
+  color: var(--primary-colour);
+  line-height: 1.5;
+}
+
+/* Contact */
+.contact {
+  background-color: #ffffff;
+}
+
+.contact h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--primary-colour);
+}
+
+.contact .subtitle {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary-colour);
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
+.form-group {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  flex: 1 1 100%;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--primary-colour);
+}
+
+form input,
+form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+form .btn {
+  background-color: var(--accent-colour);
+  color: var(--text-light);
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+form .btn:hover {
+  background-color: var(--accent-colour-hover);
+}
+
+.contact-info {
+  text-align: center;
+  color: var(--primary-colour);
+}
+
+.contact-info .info-item {
+  margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-colour);
+  padding: 20px 0;
+  color: var(--text-light);
+}
+
+footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+footer .citations {
+  font-size: 0.8rem;
+}
+
+footer .citations a {
+  color: #66b2ff;
+  text-decoration: none;
+}
+
+footer .citations a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile navigation behaviour */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 200px;
+    height: calc(100vh - 60px);
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
